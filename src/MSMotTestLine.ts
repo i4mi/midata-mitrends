@@ -1,7 +1,6 @@
 import {Observation, registerResource, Survey} from "midata";
 
 export type handSide = "left" | "right";
-export type x = 1 | 2 | 3 | 4;
 
 registerResource('MSMotTestLine')
 export class MSMotTestLine extends Observation {
@@ -28,12 +27,12 @@ export class MSMotTestLine extends Observation {
 
         super(date, code, Survey);
 
-        super.addProperty("bodysite", bodySite);
+        super.addProperty("bodySite", bodySite);
 
     }
 
 
-    addLxDuration(lxDuration: number, lValue: x) {
+    addLxDuration(lxDuration: number, lValue: number) {
 
         super.addComponent({
             code: {
@@ -53,7 +52,7 @@ export class MSMotTestLine extends Observation {
 
     }
 
-    addLxAvgDist(lxAvgDist: number, lValue: x) {
+    addLxAvgDist(lxAvgDist: number, lValue: number) {
 
         super.addComponent({
             code: {
@@ -70,7 +69,7 @@ export class MSMotTestLine extends Observation {
 
     }
 
-    addLxStdDevDist(lxStdDevDist: number, lValue: x) {
+    addLxStdDevDist(lxStdDevDist: number, lValue: number) {
 
         super.addComponent({
             code: {

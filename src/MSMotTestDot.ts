@@ -27,7 +27,7 @@ export class MSMotTestDot extends Observation {
 
         super(date, code, Survey);
 
-        super.addProperty("bodysite", bodySite);
+        super.addProperty("bodySite", bodySite);
 
     }
 
