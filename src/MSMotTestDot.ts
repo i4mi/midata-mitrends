@@ -1,4 +1,4 @@
-import {Observation, registerResource, Survey} from "midata";
+import {Observation, registerResource} from "midata";
 
 export type handSide = "left" | "right";
 
@@ -25,7 +25,15 @@ export class MSMotTestDot extends Observation {
             ]
         };
 
-        super(date, code, Survey);
+        super(date, code, {
+            coding: [{
+                system: 'http://hl7.org/fhir/observation-category',
+                code: 'survey',
+                display: 'Survey'
+            }],
+            text: 'Survey'
+
+        });
 
         super.addProperty("bodySite", bodySite);
 

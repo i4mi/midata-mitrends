@@ -1,4 +1,4 @@
-import {Observation, registerResource, Survey, Resource} from "midata";
+import {Observation, registerResource, Resource} from "midata";
 
 @registerResource('MSTests')
 export class MSTests extends Observation {
@@ -12,7 +12,15 @@ export class MSTests extends Observation {
                 }
             ]
         };
-        super(date, code, Survey);
+        super(date, code, {
+            coding: [{
+                system: 'http://hl7.org/fhir/observation-category',
+                code: 'survey',
+                display: 'Survey'
+            }],
+            text: 'Survey'
+
+        });
         super.addProperty("comment", comment);
     }
 

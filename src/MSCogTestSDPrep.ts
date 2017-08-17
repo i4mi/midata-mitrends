@@ -1,4 +1,4 @@
-import {Observation, registerResource, Survey} from "midata";
+import {Observation, registerResource} from "midata";
 
 
 @registerResource('MSCogTestSDPrep')
@@ -14,7 +14,15 @@ export class MSCogTestSDPrep extends Observation {
             ]
         };
 
-        super(date, code, Survey);
+        super(date, code, {
+            coding: [{
+                system: 'http://hl7.org/fhir/observation-category',
+                code: 'survey',
+                display: 'Survey'
+            }],
+            text: 'Survey'
+
+        });
 
     }
 
