@@ -1,5 +1,6 @@
 import { Observation, Resource } from "midata";
+import * as md from 'midata';
 export declare class MSTests extends Observation {
-    constructor(date: Date, comment: string);
+    constructor(date: md.DateTime, comment: string);
     addRelated(resource: Resource): void;
 }

@@ -1,8 +1,9 @@
 import {Observation, registerResource, Resource} from "midata";
+import * as md from 'midata';
 
-@registerResource('MSTests')
+@registerResource('resourceType','MSTests')
 export class MSTests extends Observation {
-    constructor(date: Date, comment: string) {
+    constructor(date: md.DateTime, comment: string) {
         let code = {
             coding: [
                 {

@@ -1,9 +1,10 @@
 import {Observation, registerResource} from "midata";
+import * as md from "midata";
 
 
-@registerResource('MSCogTestSDPrep')
+@registerResource('resourceType','MSCogTestSDPrep')
 export class MSCogTestSDPrep extends Observation {
-    constructor(date: Date) {
+    constructor(date: md.DateTime) {
         let code = {
             coding: [
                 {

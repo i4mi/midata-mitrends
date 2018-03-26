@@ -1,10 +1,11 @@
 import {Observation, registerResource} from "midata";
+import * as md from 'midata';
 
 export type handSide = "left" | "right";
 
-@registerResource('MSMotTestDot')
+@registerResource('resourceType','MSMotTestDot')
 export class MSMotTestDot extends Observation {
-    constructor(date: Date, handSide: handSide) {
+    constructor(date: md.DateTime, handSide: handSide) {
         let code = {
             coding: [
                 {
@@ -18,7 +19,7 @@ export class MSMotTestDot extends Observation {
         let bodySite = {
             coding: [
                 {
-                    system: "http://snowmed.info/sct",
+                    system: "http://snomed.info/sct",
                     code: handSide === "left" ? "368456002" : "368455003",
                     display: handSide === "left" ? "Linke Hand" : "Rechte Hand",
                 }
