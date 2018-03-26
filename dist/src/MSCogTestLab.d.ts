@@ -1,6 +1,7 @@
 import { Observation } from "midata";
 export declare class MSCogTestLab extends Observation {
     constructor(date: Date, tryAmount: number);
+    addNbLabWay(numberLab: number): void;
     addNbClicks(clickAmount: number): void;
     addNbPointsLab(pointsLabAmount: number): void;
     addNbCorrectConnections(correctConnectionsAmount: number): void;

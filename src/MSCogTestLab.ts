@@ -38,6 +38,22 @@ export class MSCogTestLab extends Observation {
 
     }
 
+    addNbLabWay(numberLab: number) {
+
+        super.addComponent({
+            code: {
+                coding: [{
+                    system: "http://midata.coop/MSCogTestLab",
+                    code: "NbLabWay",
+                    display: "Nummer Labyrinthweg"
+                }]
+            },
+            valueQuantity: {
+                value: numberLab
+            }
+        })
+    }
+
     addNbClicks(clickAmount: number) {
 
         super.addComponent({
