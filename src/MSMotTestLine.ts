@@ -2,10 +2,11 @@ import {Observation, registerResource} from "midata";
 import * as md from 'midata';
 
 export type handSide = "left" | "right";
+export type methodLineTest = "Pen" | "Finger";
 
 registerResource('resourceType','MSMotTestLine')
 export class MSMotTestLine extends Observation {
-    constructor(date: md.DateTime, handSide: handSide) {
+    constructor(date: md.DateTime, handSide: handSide, methodLineTest: methodLineTest) {
         let code = {
             coding: [
                 {
@@ -26,6 +27,17 @@ export class MSMotTestLine extends Observation {
             ]
         };
 
+        let method = {
+            coding: [
+                {
+                    system: "http://midata.coop/MSMotTestLine",
+                    code: methodLineTest === "Pen" ? "Pen" : "Finger",
+                    display: methodLineTest === "Pen" ? "Stift verwendet" : "Finger verwendet"
+
+                }
+            ]
+        };
+
         super(date, code, {
             coding: [{
                 system: 'http://hl7.org/fhir/observation-category',
@@ -37,9 +49,24 @@ export class MSMotTestLine extends Observation {
         });
 
         super.addProperty("bodySite", bodySite);
+        super.addProperty("method", method);
 
     }
+    addDTWAvgDist(dTWAvgDist: number) {
 
+        super.addComponent({
+            code: {
+                coding: [{
+                    system: "http://midata.coop/MSMotTestLine",
+                    code: "DTWAvgDist",
+                    display: "Durchschnittliche Distanz durch DTW Algorithmus"
+                }]
+            },
+            valueQuantity: {
+                value: dTWAvgDist
+            }
+        })
+    }
 
     addLxDuration(lxDuration: number, lValue: number) {
 
