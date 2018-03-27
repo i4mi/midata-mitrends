@@ -1,9 +1,8 @@
 import {Observation, registerResource} from "midata";
-import * as md from 'midata';
 
 @registerResource('resourceType', 'MSCogTestLab')
 export class MSCogTestLab extends Observation {
-    constructor(date: md.DateTime, tryAmount: number) {
+    constructor(tryAmount: number) {
         let code = {
             coding: [
                 {
@@ -14,7 +13,7 @@ export class MSCogTestLab extends Observation {
             ]
         };
 
-        super(date, code, {
+        super({_dateTime: new Date().toISOString()}, code, {
             coding: [{
                 system: 'http://hl7.org/fhir/observation-category',
                 code: 'survey',

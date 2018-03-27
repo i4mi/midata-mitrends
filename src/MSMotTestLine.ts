@@ -1,11 +1,10 @@
 import {Observation, registerResource} from "midata";
-import * as md from 'midata';
 
 export type handSide = "left" | "right";
 
 registerResource('resourceType','MSMotTestLine')
 export class MSMotTestLine extends Observation {
-    constructor(date: md.DateTime, handSide: handSide) {
+    constructor(handSide: handSide) {
         let code = {
             coding: [
                 {
@@ -26,7 +25,7 @@ export class MSMotTestLine extends Observation {
             ]
         };
 
-        super(date, code, {
+        super({_dateTime: new Date().toISOString()}, code, {
             coding: [{
                 system: 'http://hl7.org/fhir/observation-category',
                 code: 'survey',

@@ -1,7 +1,6 @@
 import { Observation } from "midata";
-import * as md from 'midata';
 export declare class MSCogTestSD extends Observation {
-    constructor(date: md.DateTime);
+    constructor();
     addNbCorrectPartResults(data: string[]): void;
     addNbIncorrectPartResults(data: string[]): void;
     addClickFreqPartResults(data: string[]): void;
