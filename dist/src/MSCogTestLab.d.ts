@@ -1,7 +1,6 @@
 import { Observation } from "midata";
-import * as md from 'midata';
 export declare class MSCogTestLab extends Observation {
-    constructor(date: md.DateTime, tryAmount: number);
+    constructor(tryAmount: number);
     addNbLabWay(numberLab: number): void;
     addNbClicks(clickAmount: number): void;
     addNbPointsLab(pointsLabAmount: number): void;

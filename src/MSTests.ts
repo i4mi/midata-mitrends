@@ -1,9 +1,8 @@
 import {Observation, registerResource, Resource} from "midata";
-import * as md from 'midata';
 
 @registerResource('resourceType','MSTests')
 export class MSTests extends Observation {
-    constructor(date: md.DateTime, comment: string) {
+    constructor(comment: string) {
         let code = {
             coding: [
                 {
@@ -13,7 +12,8 @@ export class MSTests extends Observation {
                 }
             ]
         };
-        super(date, code, {
+
+        super({_dateTime: new Date().toISOString()}, code, {
             coding: [{
                 system: 'http://hl7.org/fhir/observation-category',
                 code: 'survey',
