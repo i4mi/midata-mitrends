@@ -40,7 +40,6 @@ export class MSMotTestLine extends Observation {
         };
 
         super({_dateTime: new Date().toISOString()}, code, {
-
             coding: [{
                 system: 'http://hl7.org/fhir/observation-category',
                 code: 'survey',
