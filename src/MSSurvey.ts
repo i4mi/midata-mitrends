@@ -1,52 +1,40 @@
-import {Observation, registerResource} from "midata";
+import { registerResource, QuestionnaireResponse} from "midata";
 
 @registerResource('resourceType','MSSurvey')
-export class MSSurvey {
+export class MSSurvey extends QuestionnaireResponse {
 
-    private resource: any;
+    private _qTitle: string;
+    private _id: number;
 
     constructor() {
-        this.resource = {
-                "resourceType" : "QuestionnaireResponse",
-                "extension": [  //** Code copy from Survey answer
-                  {
-                    "url": "http://midata.coop/extensions/response-code",
-                    "valueCoding": {
-                        "system": "http://midata.coop",
-                        "code": "QuestionnaireResponse",
-                        "display": "Questionnaire"
-                    }
-                  }
-              ],
-              "status" : "completed", // R!  in-progress | completed | amended | entered-in-error | stopped
-              "authored" : new Date().toISOString(), // Date the answers were gathered
-              "item" : []
-        }
-    }
-    
-    defineSurvey(linkID: number, questionnaireTitle: String){
-        this.resource.item = [{
-            "linkId" : linkID, // R!  Pointer to specific item from Questionnaire
-            "text" : questionnaireTitle, // Name for group or question text
-            "item" : []
-        }];
+        let d = new Date().toISOString();
+        super(d, "completed");
     }
 
+    defineSurvey(linkID: number, questionnaireTitle: string) {
+        let s = {
+            linkId: linkID,
+            text: questionnaireTitle,
+            item: new Array()
+        };
 
-    addItem(items: [{question: String, answer: String}]){
+        this._qTitle = questionnaireTitle;
+        this._id = linkID;
+        
+        super.addSurvey(s);
+    }
+
+    addItem(items: [{question: string, answer: string}]) {
         for(var i = 0; i < items.length; i++){
             let item = items[i];
             let j = i + 1;
-            this.resource.item[0].item.push(
-                {   "linkId" : this.resource.item[0].linkId + "." + j, // R!  Pointer to specific item from Questionnaire
-                    "text" : item.question,
-                    "answer" : [
-                      {
-                        "valueString" : item.answer
-                      }
-                    ]
-                  }
-            );
+            let aItem = {   
+                linkId: this._id + "." + j, // R!  Pointer to specific item from Questionnaire
+                text: item.question,
+                answer: [{
+                    valueString: item.answer
+                }]};
+            super.addItemToSurvey(aItem, this._qTitle);
         }
     }
-};
+}

@@ -1,9 +1,11 @@
-export declare class MSSurvey {
-    private resource;
+import { QuestionnaireResponse } from "midata";
+export declare class MSSurvey extends QuestionnaireResponse {
+    private _qTitle;
+    private _id;
     constructor();
-    defineSurvey(linkID: number, questionnaireTitle: String): void;
+    defineSurvey(linkID: number, questionnaireTitle: string): void;
     addItem(items: [{
-        question: String;
-        answer: String;
+        question: string;
+        answer: string;
     }]): void;
 }
