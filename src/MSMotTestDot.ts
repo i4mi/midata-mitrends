@@ -57,7 +57,6 @@ export class MSMotTestDot extends Observation {
                 system: "http://unitsofmeasure.org"
             }
         })
-
     }
 
     addPoints(pointsAmount: number) {
@@ -74,8 +73,10 @@ export class MSMotTestDot extends Observation {
                 value: pointsAmount
             }
         })
-
     }
+
+
+
 
 }
 ;
