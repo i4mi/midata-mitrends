@@ -8,7 +8,7 @@ export class MSTests extends Observation {
                 {
                     system: "http://midata.coop",
                     code: "MSTests",
-                    display: "Kognitive und motorische Übungen von MS-Patienten"
+                    display: "MitrendS Sammelobjekt pro Testdurchlauf"
                 }
             ]
         };
