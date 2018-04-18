@@ -3,7 +3,7 @@ import {Observation, registerResource} from "midata";
 export type handSide = "left" | "right";
 
 @registerResource('resourceType','MSMotTestDot')
-export class MSMotTestDotSequence extends Observation {
+export class MSMotTestDotDetails extends Observation {
 
     private componentTemplate: any;
 
@@ -58,7 +58,7 @@ export class MSMotTestDotSequence extends Observation {
             }
     }
 
-    addDotCoords(code: String, display: String, data: any) : void {
+    addPointCoords(code: String, display: String, data: any) : void {
         let dim = (data[0].t !== undefined && data[0].t !== null) ? 2 : 3;
         data = this.iterateData(data);
         let component = this.getComponent(code, display, dim, data);
@@ -68,8 +68,12 @@ export class MSMotTestDotSequence extends Observation {
     // Convert from array to string
     iterateData(data: any): String{
         var string = '';
-        for(let a of data)
-            string += a.join(' ') + " ";
+        for(let a of data) {
+            string += a.x + " " + a.y + " ";
+            if (a.t !== undefined || a.t !== null)
+                string += a.t + " "
+        }
+            
         return string;
     };
 
