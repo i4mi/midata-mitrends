@@ -12,8 +12,8 @@ export class MSMotTestDotDetails extends Observation {
             coding: [
                 {
                     system: "http://midata.coop",
-                    code: "MSMotTestDot",
-                    display: "MS Motoriktest Punkte bewegen"
+                    code: "MSMotTestDotDetail",
+                    display: "MS Motoriktest Punkte bewegen pro Durchgang"
                 }
             ]
         };
@@ -42,7 +42,7 @@ export class MSMotTestDotDetails extends Observation {
      return {
             code: {
                 coding: [{
-                    system: "http://midata.coop/MSMotTestDot",
+                    system: "http://midata.coop/MSMotTestDotDetail",
                     code: code,
                     display: display
                 }]
