@@ -59,10 +59,11 @@ export class MSMotTestDotDetails extends Observation {
     }
 
     addPointCoords(code: String, display: String, data: any) : void {
-        let dim = (typeof data[0].t !== "undefined" && typeof data[0][0].t !== "undefined") ? 3 : 4;
+        let dim = (data[0] instanceof Array &&
+            typeof data[0][0].t !== "undefined") ? 4 : 3;
         let data2 = this.iterateData(data);
-        console.log(data2);
         let component = this.getComponent(code, display, dim, data2);
+        console.log(component);
         super.addComponent(component);
     }
 
