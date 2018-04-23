@@ -98,7 +98,7 @@ export class MSMotTestDotDetails extends Observation {
 
         let component = this.getComponent(
             "LockedPeriod",
-            "Locked Period Punkte freigelassen Zeitpunkt, Zustand Dot1, Zustand Dot2, Zustand Dot3",
+            "Zeitpunkt loslassen, Dot#",
             3,
             lockedPos
         );
@@ -111,7 +111,7 @@ export class MSMotTestDotDetails extends Observation {
 
             let component = this.getComponent(
                 "SnapOrder",
-                "Snap Order: Zeitpunkt, Dot#, Pos#",
+                "Zeitpunkt, Dot#, Pos#",
                 4,
                 snapPos
             );
