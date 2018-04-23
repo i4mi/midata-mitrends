@@ -59,9 +59,10 @@ export class MSMotTestDotDetails extends Observation {
     }
 
     addPointCoords(code: String, display: String, data: any) : void {
-        let dim = (data[0].t !== undefined && data[0].t !== null) ? 2 : 3;
-        data = this.iterateData(data);
-        let component = this.getComponent(code, display, dim, data);
+        let dim = (typeof data[0].t !== "undefined" && typeof data[0][0].t !== "undefined") ? 3 : 4;
+        let data2 = this.iterateData(data);
+        console.log(data2);
+        let component = this.getComponent(code, display, dim, data2);
         super.addComponent(component);
     }
 
@@ -69,33 +70,75 @@ export class MSMotTestDotDetails extends Observation {
     iterateData(data: any): String{
         var string = '';
         for(let a of data) {
-            string += a.x + " " + a.y + " ";
-            if (a.t !== undefined || a.t !== null)
-                string += a.t + " "
+            if (typeof a[0] !== "undefined") {
+                string += this.iterationHelper(a[0]);
+            } else 
+            {
+                string += this.iterationHelper(a);
+            }
         }
             
         return string;
     };
 
+    iterationHelper(a: any): String { 
+        var string = a.x + " " + a.y + " ";
+        if (typeof a.t !== "undefined") {
+            string += a.t + " ";
+        }
+        string += ";" + " ";
+        return string;
+    };
+
     locked(data: any){ 
-        data = this.iterateData(data);
+        var lockedPos = '';
+        for(let p of data) {
+           lockedPos += this.dpIterator(p.lockedPeriod);
+        }
+
         let component = this.getComponent(
             "LockedPeriod",
             "Locked Period Punkte freigelassen Zeitpunkt, Zustand Dot1, Zustand Dot2, Zustand Dot3",
-            4,
-            data
+            3,
+            lockedPos
         );
         super.addComponent(component);
     };
-    
+   
     snap(data: any){
-        data = this.iterateData(data);
-        let component = this.getComponent(
-            "SnapOrder",
-            "Snap Order: Zeitpunkt, Dot#, Pos#",
-            3,
-            data
-        );
-        super.addComponent(component);
+        for (let sp of data) {
+            var snapPos = this.dpHelper(sp);
+
+            let component = this.getComponent(
+                "SnapOrder",
+                "Snap Order: Zeitpunkt, Dot#, Pos#",
+                4,
+                snapPos
+            );
+            super.addComponent(component);
+        }
+    }
+
+    dpIterator(data: any){
+        var string = '';
+        for (let a of data) {
+            if (typeof a[0] !== "undefined") {
+                console.log(a[0]);
+                string += this.dpHelper(a[0]);
+            } else 
+            {
+                string += this.dpHelper(a);
+            }
+        }
+        return string;
+    }
+
+    dpHelper(data: any){
+        var string = data.t + " " + data.dot + " ";
+        if (typeof data.pos !== "undefined") {
+            string += data.pos + " ";
+        }
+        string += ";" + " ";
+        return string;
     }
 };
