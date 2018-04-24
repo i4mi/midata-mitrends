@@ -5,4 +5,6 @@ export declare class MSCogTestSDPrep extends Observation {
     addNbIncorrect(incorrectAssignmentAmount: number): void;
     addDuration(duration: number): void;
     addClickFrequency(clickFreq: number): void;
+    addResultsPerClick(rawData: any[]): void;
+    private _processClickResult(data);
 }

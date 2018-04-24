@@ -4,9 +4,11 @@ export declare class MSCogTestSD extends Observation {
     addNbCorrectPartResults(data: string[]): void;
     addNbIncorrectPartResults(data: string[]): void;
     addClickFreqPartResults(data: string[]): void;
+    addResultsPerClick(rawData: any[]): void;
     addNbTotalCorrect(totalCorrectAmount: number): void;
     addNbTotalIncorrect(totalIncorrectAmount: number): void;
     addClickFrequency(clickFrequency: number): void;
     addDuration(duration: number): void;
     private _extractDataStream(data);
+    private _processClickResult(data);
 }

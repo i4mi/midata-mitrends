@@ -92,6 +92,28 @@ export class MSCogTestSD extends Observation {
 
     }
 
+    addResultsPerClick(rawData: any[]) {
+        let data = this._processClickResult(rawData);
+
+        super.addComponent({
+            code: {
+                coding: [{
+                    system: "http://midata.coop/MSCogTestSD",
+                    code: "ResultsPerClick",
+                    display: "Zeitpunkt und ob korrekt oder unkorrekt zugeordnet pro Klick"
+                }]
+            },
+            valueSampledData: {
+                origin: {
+                    value: 0
+                },
+                period: 0,
+                dimensions: 3,
+                data: data
+             }
+        });
+
+    }
 
     addNbTotalCorrect(totalCorrectAmount: number) {
 
@@ -106,7 +128,7 @@ export class MSCogTestSD extends Observation {
             valueQuantity: {
                 value: totalCorrectAmount
             }
-        })
+        });
 
     }
 
@@ -174,6 +196,15 @@ export class MSCogTestSD extends Observation {
             }
         }
         return dataStream;
+    }
+
+    private _processClickResult(data: any[]): string {
+        var string = '';
+        for (let e of data) {
+            string += e.t + " " + e.r + " ; ";
+        }
+
+        return string;
     }
 
 }

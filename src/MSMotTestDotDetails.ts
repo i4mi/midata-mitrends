@@ -63,7 +63,6 @@ export class MSMotTestDotDetails extends Observation {
             typeof data[0][0].t !== "undefined") ? 4 : 3;
         let data2 = this.iterateData(data);
         let component = this.getComponent(code, display, dim, data2);
-        console.log(component);
         super.addComponent(component);
     }
 
