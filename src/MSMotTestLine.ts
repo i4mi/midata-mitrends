@@ -90,7 +90,6 @@ export class MSMotTestLine extends Observation {
     }
 
     addLxAvgDist(lxAvgDist: number, lValue: number) {
-
         super.addComponent({
             code: {
                 coding: [{
@@ -103,8 +102,22 @@ export class MSMotTestLine extends Observation {
                 value: lxAvgDist
             }
         })
-
     }
+
+    addVisibleLine(isVisible: boolean) {
+        super.addComponent({
+            code: {
+                coding: [{
+                    system: "http://midata.coop/MSMotTestLine",
+                    code: "LineVisibility",
+                    display: "Sichtbarkeit der Linie"
+                }]
+            },
+            valueBoolean: isVisible
+        })
+    }
+
+
 
     addLxStdDevDist(lxStdDevDist: number, lValue: number) {
 
