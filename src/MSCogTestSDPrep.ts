@@ -99,6 +99,24 @@ export class MSCogTestSDPrep extends Observation {
 
     }
 
+    addNumberOfAttempts(attemptsNr: number) {
+
+        super.addComponent({
+            code: {
+                coding: [{
+                    system: "http://midata.coop/MSCogTestSDPrep",
+                    code: "NumberOfAttempts",
+                    display: "Anzahl der Versuche"
+                }]
+            },
+            valueQuantity: {
+                value: attemptsNr
+            }
+        });
+
+    }
+
+
     addResultsPerClick(rawData: any[]) {
         let data = this._processClickResult(rawData);
 
@@ -107,7 +125,7 @@ export class MSCogTestSDPrep extends Observation {
                 coding: [{
                     system: "http://midata.coop/MSCogTestSDPrep",
                     code: "ResultsPerClick",
-                    display: "Zeitpunkt und ob korrekt oder unkorrekt zugeordnet pro Klick"
+                    display: "Zeitpunkt & korrekte/inkorrekte Zuordung der Zahl zum Symbol per Klick"
                 }]
             },
             valueSampledData: {

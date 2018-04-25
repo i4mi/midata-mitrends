@@ -100,7 +100,7 @@ export class MSCogTestSD extends Observation {
                 coding: [{
                     system: "http://midata.coop/MSCogTestSD",
                     code: "ResultsPerClick",
-                    display: "Zeitpunkt und ob korrekt oder unkorrekt zugeordnet pro Klick"
+                    display: "Zeitpunkt & korrekte/inkorrekte Zuordung der Zahl zum Symbol per Klick"
                 }]
             },
             valueSampledData: {
