@@ -6,5 +6,6 @@ export { MSMotTestLine } from './MSMotTestLine';
 export { MSTests } from './MSTests';
 export { MSCogTestLab } from './MSCogTestLab';
 export { MSSurvey } from './MSSurvey';
+export { MSMotTestNHP } from './MSMotTestNHP';
 import * as resources from './';
 export { resources };
