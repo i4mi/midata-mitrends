@@ -13,6 +13,4 @@ export declare class MSCogTestLab extends Observation {
     addScore(scoreAmount: number): void;
     addNbCorrectTries(correctTriesAmount: number): void;
     addDuration(duration: number): void;
-    addResultsPerClick(rawData: any[]): void;
-    private _processClickResult(data);
 }

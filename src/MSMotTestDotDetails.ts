@@ -106,17 +106,18 @@ export class MSMotTestDotDetails extends Observation {
     };
    
     snap(data: any){
+        var snapPos = '';
         for (let sp of data) {
-            var snapPos = this.dpHelper(sp);
-
-            let component = this.getComponent(
-                "SnapOrder",
-                "Zeitpunkt, Dot#, Pos#",
-                4,
-                snapPos
-            );
-            super.addComponent(component);
+            snapPos += this.dpHelper(sp);
         }
+
+        let component = this.getComponent(
+            "SnapOrder",
+            "Zeitpunkt, Dot#, Pos#",
+            4,
+            snapPos
+        );
+        super.addComponent(component);
     }
 
     dpIterator(data: any){
