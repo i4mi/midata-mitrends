@@ -105,6 +105,7 @@ export class MSMotTestLine extends Observation {
     }
 
     addVisibleLine(isVisible: boolean) {
+        let b = (isVisible) ? 1 : 0;
         super.addComponent({
             code: {
                 coding: [{
@@ -113,7 +114,9 @@ export class MSMotTestLine extends Observation {
                     display: "Sichtbarkeit der Linie"
                 }]
             },
-            valueBoolean: isVisible
+            valueQuantity: {
+                value: b
+            }        
         })
     }
 

@@ -6,5 +6,6 @@ export declare class MSMotTestLine extends Observation {
     addDTWAvgDist(dTWAvgDist: number): void;
     addLxDuration(lxDuration: number, lValue: number): void;
     addLxAvgDist(lxAvgDist: number, lValue: number): void;
+    addVisibleLine(isVisible: boolean): void;
     addLxStdDevDist(lxStdDevDist: number, lValue: number): void;
 }
