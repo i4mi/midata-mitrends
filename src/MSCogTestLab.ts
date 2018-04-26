@@ -241,7 +241,7 @@ export class MSCogTestLab extends Observation {
                 coding: [{
                     system: "http://midata.coop/MSCogTestLab",
                     code: "ResultsPerClick",
-                    display: "Zeitpunkt und ob korrekt oder unkorrekt zugeordnet pro Klick"
+                    display: "Zeitpunkt, korrekt zugeordnet, x und y pro Klick"
                 }]
             },
             valueSampledData: {
@@ -249,7 +249,7 @@ export class MSCogTestLab extends Observation {
                     value: 0
                 },
                 period: 0,
-                dimensions: 3,
+                dimensions: 5,
                 data: data
              }
         });
@@ -258,7 +258,7 @@ export class MSCogTestLab extends Observation {
     private _processClickResult(data: any[]): string {
         var string = '';
         for (let e of data) {
-            string += e.t + " " + e.r + " ; ";
+            string += e.t + " " + e.r + " " + e.x + " " + e.y + " " + " ; ";
         }
         return string;
     }
