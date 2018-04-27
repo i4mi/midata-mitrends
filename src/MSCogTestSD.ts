@@ -40,7 +40,7 @@ export class MSCogTestSD extends Observation {
                     value: 0
                 },
                 period: 15000,
-                dimensions: 1,
+                dimensions: 2,
                 data: this._extractDataStream(data)
             }
         })
@@ -63,7 +63,7 @@ export class MSCogTestSD extends Observation {
                     value: 0
                 },
                 period: 15000,
-                dimensions: 1,
+                dimensions: 2,
                 data: this._extractDataStream(data)
             }
         })
@@ -85,7 +85,7 @@ export class MSCogTestSD extends Observation {
                     value: 0
                 },
                 period: 15000,
-                dimensions: 1,
+                dimensions: 2,
                 data: this._extractDataStream(data)
             }
         })
@@ -190,9 +190,9 @@ export class MSCogTestSD extends Observation {
         let dataStream: string;
         for (let entry of data){
             if(dataStream == null){
-                dataStream = `${entry}`
+                dataStream = `${entry}` + " ; "
             } else {
-                dataStream = `${dataStream} ${entry}`
+                dataStream = `${dataStream} ${entry}` + " ; " 
             }
         }
         return dataStream;
