@@ -1,9 +1,9 @@
 import { Observation } from "midata";
 export declare class MSMotTestNHP extends Observation {
-    constructor(date: any);
-    addDominantHandRoundOne(s: number, ms?: number): void;
-    addDominantHandRoundTwo(s: number, ms?: number): void;
-    addNotDominantHandRoundOne(s: number, ms?: number): void;
-    addNotDominantHandRoundTwo(s: number, ms?: number): void;
+    constructor(date: any, handSide: string);
+    addDominantHandRoundOne(s: number): void;
+    addDominantHandRoundTwo(s: number): void;
+    addNotDominantHandRoundOne(s: number): void;
+    addNotDominantHandRoundTwo(s: number): void;
     private componentGenerator(time, code, u);
 }

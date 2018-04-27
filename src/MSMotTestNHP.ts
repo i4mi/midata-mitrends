@@ -2,7 +2,7 @@ import {Observation, registerResource} from "midata";
 
 @registerResource('resourceType','MSMotTestNHP')
 export class MSMotTestNHP extends Observation {
-    constructor(date: any) {
+    constructor(date: any, handSide: string) {
         let code = {
             coding: [
                 {
@@ -23,38 +23,32 @@ export class MSMotTestNHP extends Observation {
 
         });
 
+        super.addProperty("bodySide", {
+            coding: [
+                {
+                    system: "http://snomed.info/sct",
+                    code: handSide === "left" ? "368456002" : "368455003",
+                    display: handSide === "left" ? "Linke Hand" : "Rechte Hand",
+                }
+            ]
+        });
+
     }
 
-    addDominantHandRoundOne(s: number, ms?: number) {
+    addDominantHandRoundOne(s: number) {
         this.componentGenerator(s, "Dominant1S", "s");
-
-        if (typeof ms !== "undefined") {
-            this.componentGenerator(ms, "Dominant1MS", "ms");
-        }
     }
 
-    addDominantHandRoundTwo(s: number, ms?: number) {
+    addDominantHandRoundTwo(s: number) {
         this.componentGenerator(s, "Dominant2S", "s");
-
-        if (typeof ms !== "undefined") {
-            this.componentGenerator(ms, "Dominant2MS", "ms");
-        }
     }
 
-    addNotDominantHandRoundOne(s: number, ms?: number) {
+    addNotDominantHandRoundOne(s: number) {
         this.componentGenerator(s, "NotDominant1S", "s");
-
-        if (typeof ms !== "undefined") {
-            this.componentGenerator(ms, "NotDominant1MS", "ms");
-        }
     }
 
-    addNotDominantHandRoundTwo(s: number, ms?: number) {
+    addNotDominantHandRoundTwo(s: number) {
         this.componentGenerator(s, "NotDominant2S", "s");
-
-        if (typeof ms !== "undefined") {
-            this.componentGenerator(ms, "NotDominant2MS", "ms");
-        }
     }
 
     private componentGenerator(time: number, code: string, u: string) {
