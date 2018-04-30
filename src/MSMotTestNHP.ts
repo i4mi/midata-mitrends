@@ -36,35 +36,34 @@ export class MSMotTestNHP extends Observation {
     }
 
     addDominantHandRoundOne(s: number) {
-        this.componentGenerator(s, "Dominant1S", "s");
+        this.componentGenerator(s, "DominantOne");
     }
 
     addDominantHandRoundTwo(s: number) {
-        this.componentGenerator(s, "Dominant2S", "s");
+        this.componentGenerator(s, "DominantTwo");
     }
 
     addNotDominantHandRoundOne(s: number) {
-        this.componentGenerator(s, "NotDominant1S", "s");
+        this.componentGenerator(s, "NotDominantOne");
     }
 
     addNotDominantHandRoundTwo(s: number) {
-        this.componentGenerator(s, "NotDominant2S", "s");
+        this.componentGenerator(s, "NotDominantTwo");
     }
 
-    private componentGenerator(time: number, code: string, u: string) {
-        var d = (u == "s") ? "Execution time of test in s" : "Addition to execution time of test in ms";
+    private componentGenerator(time: number, code: string) {
         super.addComponent({
             code: {
                 coding: [{
                     system: "http://midata.coop/MSMotNineHolePeg",
                     code: "MSMotNineHolePegTestRun" + code,
-                    display: d
+                    display: "Execution time of test in s"
                 }]
             },
             valueQuantity: {
                 value: time,
-                unit: u,
-                code: u,
+                unit: "s",
+                code: "s",
                 system: "http://unitsofmeasure.org"
             }
         });

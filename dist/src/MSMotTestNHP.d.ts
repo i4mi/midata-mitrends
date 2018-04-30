@@ -5,5 +5,5 @@ export declare class MSMotTestNHP extends Observation {
     addDominantHandRoundTwo(s: number): void;
     addNotDominantHandRoundOne(s: number): void;
     addNotDominantHandRoundTwo(s: number): void;
-    private componentGenerator(time, code, u);
+    private componentGenerator(time, code);
 }
