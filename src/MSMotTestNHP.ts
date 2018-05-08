@@ -23,7 +23,7 @@ export class MSMotTestNHP extends Observation {
 
         });
 
-        super.addProperty("bodySide", {
+        super.addProperty("bodySite", {
             coding: [
                 {
                     system: "http://snomed.info/sct",
